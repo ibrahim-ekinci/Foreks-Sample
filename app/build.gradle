@@ -1,0 +1,86 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+        applicationId "com.gloorystudio.foreks_sample"
+        minSdk AndroidSdk.min
+        targetSdk AndroidSdk.target
+        versionCode AndroidSdk.versionCode
+        versionName AndroidSdk.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        dataBinding true
+    }
+}
+
+dependencies {
+
+    implementation(Libraries.coreKtx)
+    implementation(Libraries.appCompat)
+    implementation(Libraries.material)
+    implementation(Libraries.constraintLayout)
+    implementation(Libraries.dataBindingRuntime)
+    implementation(Libraries.legacySupportV4)
+    testImplementation(Libraries.junit)
+    androidTestImplementation(Libraries.junitExt)
+    androidTestImplementation(Libraries.espresso)
+    implementation(Libraries.fragmentKtx)
+
+    // Timber
+    implementation(Libraries.timber)
+
+    // Lifecycle Scopes
+    implementation(Libraries.lifecycleViewModelKtx)
+    implementation(Libraries.lifecycleRuntimeKtx)
+    implementation(Libraries.lifecycleExt)
+
+    // Retrofit
+    implementation(Libraries.retrofit)
+    implementation(Libraries.converterGson)
+    implementation(Libraries.okhttp)
+    implementation(Libraries.loggingInterceptor)
+
+    //Navigation
+    implementation(Libraries.navigationFragmentKtx)
+    implementation(Libraries.navigationUiKtx)
+
+    //Room
+    implementation(Libraries.roomRuntime){
+        exclude(group:'org.xerial')
+    }
+    kapt(Libraries.roomCompiler){
+        exclude(group:'org.xerial')
+    }
+    implementation(Libraries.roomKtx){
+        exclude(group:'org.xerial')
+    }
+    implementation(Libraries.sqliteJdbc)
+
+    //RxJava
+    implementation(Libraries.rxJava)
+    implementation(Libraries.rxAndroid)
+}
