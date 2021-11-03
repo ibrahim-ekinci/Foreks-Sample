@@ -30,7 +30,6 @@ object Libraries {
         const val junitExtVersion = "1.1.3"
         const val espressoVersion = "3.4.0"
         const val fragmentKtxVersion = "1.3.6"
-        const val rxJavaVersion = "2.1.1"
 
         // Timber
         const val timberVersion = "4.7.1"
@@ -50,6 +49,11 @@ object Libraries {
         const val roomVersion = "2.3.0"
         const val sqliteJdbcVersion = "3.34.0"
 
+        //RxJava
+        const val rxJavaVersion = "2.1.1"
+
+        //Dagger
+        const val daggerVersion = "2.27"
     }
 
     const val coreKtx = "androidx.core:core-ktx:${Version.coreKtxVersion}"
@@ -98,4 +102,11 @@ object Libraries {
     //RxJava
     const val rxJava = "io.reactivex.rxjava2:rxjava:${Version.rxJavaVersion}"
     const val rxAndroid = "io.reactivex.rxjava2:rxandroid:${Version.rxJavaVersion}"
+
+    //Dagger
+    const val dagger = "com.google.dagger:dagger:${Version.daggerVersion}"
+    const val daggerCompiler = "com.google.dagger:dagger-compiler:${Version.daggerVersion}"
+    const val daggerAndroid = "com.google.dagger:dagger-android:${Version.daggerVersion}"
+    const val daggerAndroidSupport = "com.google.dagger:dagger-android-support:${Version.daggerVersion}"
+    const val daggerAndroidProcessor = "com.google.dagger:dagger-android-processor:${Version.daggerVersion}"
 }

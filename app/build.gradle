@@ -45,6 +45,7 @@ dependencies {
     implementation(Libraries.constraintLayout)
     implementation(Libraries.dataBindingRuntime)
     implementation(Libraries.legacySupportV4)
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation(Libraries.junit)
     androidTestImplementation(Libraries.junitExt)
     androidTestImplementation(Libraries.espresso)
@@ -83,4 +84,11 @@ dependencies {
     //RxJava
     implementation(Libraries.rxJava)
     implementation(Libraries.rxAndroid)
+
+    //Dagger
+    implementation(Libraries.dagger)
+    kapt(Libraries.daggerCompiler)
+    implementation(Libraries.daggerAndroid)
+    implementation(Libraries.daggerAndroidSupport)
+    kapt(Libraries.daggerAndroidProcessor)
 }
