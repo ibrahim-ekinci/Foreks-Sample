@@ -54,6 +54,10 @@ object Libraries {
 
         //Dagger
         const val daggerVersion = "2.27"
+
+        //MPAndroidChart
+        const val mpAndroidChartVersion = "3.1.0"
+
     }
 
     const val coreKtx = "androidx.core:core-ktx:${Version.coreKtxVersion}"
@@ -84,6 +88,7 @@ object Libraries {
     // Retrofit
     const val retrofit = "com.squareup.retrofit2:retrofit:${Version.retrofitVersion}"
     const val converterGson = "com.squareup.retrofit2:converter-gson:${Version.retrofitVersion}"
+    const val retrofitRxJavaAdapter = "com.squareup.retrofit2:adapter-rxjava2:${Version.retrofitVersion}"
     const val okhttp = "com.squareup.okhttp3:okhttp:${Version.okhttpVersion}"
     const val loggingInterceptor =
         "com.squareup.okhttp3:logging-interceptor:${Version.okhttpVersion}"
@@ -109,4 +114,7 @@ object Libraries {
     const val daggerAndroid = "com.google.dagger:dagger-android:${Version.daggerVersion}"
     const val daggerAndroidSupport = "com.google.dagger:dagger-android-support:${Version.daggerVersion}"
     const val daggerAndroidProcessor = "com.google.dagger:dagger-android-processor:${Version.daggerVersion}"
+
+    //MPAndroidChart
+    const val mpAndroidChart = "com.github.PhilJay:MPAndroidChart:${Version.mpAndroidChartVersion}"
 }

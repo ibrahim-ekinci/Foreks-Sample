@@ -22,7 +22,7 @@
         android:label="fragment_currency_detail"
         tools:layout="@layout/fragment_currency_detail" >
         <argument
-            android:name="tke"
+            android:name="code"
             app:argType="string" />
     </fragment>
     <fragment

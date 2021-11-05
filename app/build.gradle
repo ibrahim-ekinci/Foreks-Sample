@@ -45,7 +45,6 @@ dependencies {
     implementation(Libraries.constraintLayout)
     implementation(Libraries.dataBindingRuntime)
     implementation(Libraries.legacySupportV4)
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation(Libraries.junit)
     androidTestImplementation(Libraries.junitExt)
     androidTestImplementation(Libraries.espresso)
@@ -62,6 +61,7 @@ dependencies {
     // Retrofit
     implementation(Libraries.retrofit)
     implementation(Libraries.converterGson)
+    implementation(Libraries.retrofitRxJavaAdapter)
     implementation(Libraries.okhttp)
     implementation(Libraries.loggingInterceptor)
 
@@ -91,4 +91,7 @@ dependencies {
     implementation(Libraries.daggerAndroid)
     implementation(Libraries.daggerAndroidSupport)
     kapt(Libraries.daggerAndroidProcessor)
+
+    //MPAndroidChart
+    implementation(Libraries.mpAndroidChart)
 }
