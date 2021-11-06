@@ -1,11 +1,14 @@
 package com.gloorystudio.foreks_sample.ui.currency_detail
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.gloorystudio.foreks_sample.base.BaseViewModel
+import com.gloorystudio.foreks_sample.data.local.db.entity.CurrencyFavoriteEntity
 import com.gloorystudio.foreks_sample.data.models.CurrencyDetailEntry
 import com.gloorystudio.foreks_sample.data.remote.responses.CurrencyGraph
 import com.gloorystudio.foreks_sample.data.repository.CurrencyRepository
 import com.gloorystudio.foreks_sample.util.Resource
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class CurrencyDetailViewModel @Inject constructor(private val repository: CurrencyRepository) :
@@ -58,6 +61,28 @@ class CurrencyDetailViewModel @Inject constructor(private val repository: Curren
                 loadError.value = result.message!!
                 isLoading.value = false
             }
+        }
+    }
+
+    fun getFavoriteCurrency(code:String, isLiked: (Boolean)->Unit){
+        viewModelScope.launch {
+            isLiked.invoke(repository.isCurrencyFavoriteToDb(code))
+        }
+    }
+
+    fun addCurrencyFavorite(){
+        currencyDetail.value?.let { currencyDetailEntry ->
+            viewModelScope.launch {
+                repository.addCurrencyFavoriteToDb(
+                    CurrencyFavoriteEntity(code = currencyDetailEntry.code)
+                )
+            }
+        }
+    }
+
+    fun removeFavoriteCurrency(code:String){
+        viewModelScope.launch {
+            repository.deleteCurrencyFavoriteToDb(code)
         }
     }
 }

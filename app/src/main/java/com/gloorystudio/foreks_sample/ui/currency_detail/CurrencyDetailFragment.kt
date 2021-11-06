@@ -27,12 +27,32 @@ class CurrencyDetailFragment :
     lateinit var code: String
     lateinit var lineDataSet: LineDataSet
     lateinit var lineData: LineData
+    private var isLiked = false
 
     override fun initUi() {
         initRecyclerView()
         arguments?.let {
             val myArgs = CurrencyDetailFragmentArgs.fromBundle(it)
             code = myArgs.code
+            viewModel.getFavoriteCurrency(code){ isLiked ->
+                this.isLiked = isLiked
+                if (isLiked) {
+                    binding.btnFavorite.text = getString(R.string.remove_favorite)
+                } else {
+                    binding.btnFavorite.text = getString(R.string.add_favorite)
+                }
+            }
+            binding.btnFavorite.setOnClickListener {
+                isLiked = if (isLiked) {
+                    viewModel.removeFavoriteCurrency(code)
+                    binding.btnFavorite.text = getString(R.string.add_favorite)
+                    false
+                } else {
+                    viewModel.addCurrencyFavorite()
+                    binding.btnFavorite.text = getString(R.string.remove_favorite)
+                    true
+                }
+            }
         }
     }
 

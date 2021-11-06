@@ -1,5 +1,6 @@
 package com.gloorystudio.foreks_sample.data.repository
 
+import com.gloorystudio.foreks_sample.data.local.db.entity.CurrencyFavoriteEntity
 import com.gloorystudio.foreks_sample.data.local.db.service.CurrencyDao
 import com.gloorystudio.foreks_sample.data.remote.CurrencyApi
 import com.gloorystudio.foreks_sample.data.remote.responses.CurrencyDetail
@@ -44,5 +45,21 @@ class CurrencyRepository @Inject constructor(
             )
         }
         return Resource.Success(response)
+    }
+
+    suspend fun addCurrencyFavoriteToDb(currencyFavoriteEntity: CurrencyFavoriteEntity){
+        dao.insertCurrencyFavorite(currencyFavoriteEntity)
+    }
+
+    suspend fun deleteCurrencyFavoriteToDb(code: String){
+        dao.deleteCurrencyFavorite(code)
+    }
+
+    suspend fun isCurrencyFavoriteToDb(code: String): Boolean{
+        return dao.getCurrencyFavorite(code)!=null
+    }
+
+    suspend fun getAllFavoriteCurrencyToDb(): List<CurrencyFavoriteEntity>? {
+        return dao.getAllCurrencyFavorite()
     }
 }

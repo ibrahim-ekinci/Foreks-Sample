@@ -1,22 +1,37 @@
 package com.gloorystudio.foreks_sample.ui.adapters
 
+import android.graphics.Color
+import android.text.SpannableStringBuilder
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.text.color
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.gloorystudio.foreks_sample.R
 import com.gloorystudio.foreks_sample.data.models.CurrencyEntry
 import com.gloorystudio.foreks_sample.databinding.ItemCurrencyBinding
+import com.gloorystudio.foreks_sample.util.AutoCompleteItem
 
-class CurrencyListAdapter(private var currencyList:ArrayList<CurrencyEntry>)
-    :RecyclerView.Adapter<CurrencyListAdapter.CurrencyListViewHolder>(){
+class CurrencyListAdapter(private var currencyList: ArrayList<CurrencyEntry>) :
+    RecyclerView.Adapter<CurrencyListAdapter.CurrencyListViewHolder>() {
 
     private var containerCardViewOnClick: ((CurrencyEntry, View) -> Unit)? = null
     fun onClickItem(actionFragmentList: (CurrencyEntry, View) -> Unit) {
         this.containerCardViewOnClick = actionFragmentList
     }
+
+    var firstAutoCompleteItem = AutoCompleteItem.LAST
+        set(value) {
+            notifyDataSetChanged()
+            field = value
+        }
+    var secondAutoCompleteItem = AutoCompleteItem.PDIFFERENCE
+        set(value) {
+            notifyDataSetChanged()
+            field = value
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrencyListViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -29,7 +44,7 @@ class CurrencyListAdapter(private var currencyList:ArrayList<CurrencyEntry>)
         return CurrencyListViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: CurrencyListViewHolder, position: Int)  =
+    override fun onBindViewHolder(holder: CurrencyListViewHolder, position: Int) =
         holder.bind(currencyList[position])
 
     override fun getItemCount(): Int = currencyList.size
@@ -51,6 +66,51 @@ class CurrencyListAdapter(private var currencyList:ArrayList<CurrencyEntry>)
 
         fun bind(currency: CurrencyEntry) {
             binding.currency = currency
+            binding.firstData = getDataByAutoComplete(firstAutoCompleteItem, currency)
+            binding.secondData = getDataByAutoComplete(secondAutoCompleteItem, currency)
+        }
+
+        private fun getDataByAutoComplete(
+            autoCompType: AutoCompleteItem,
+            currency: CurrencyEntry
+        ) = when (autoCompType) {
+            AutoCompleteItem.LAST -> {
+                SpannableStringBuilder().append(currency.last)
+            }
+            AutoCompleteItem.PDIFFERENCE -> {
+                val difference = currency.pDifference.replace(",", ".").toFloat()
+                val color = when {
+                    difference > 0 -> Color.GREEN
+                    difference < 0 -> Color.RED
+                    else -> Color.GRAY
+                }
+                SpannableStringBuilder()
+                    .color(color) { append("%${currency.pDifference}") }
+            }
+            AutoCompleteItem.DIFFERENCE -> {
+                val difference = currency.difference.replace(",", ".").toFloat()
+                val color = when {
+                    difference > 0 -> Color.GREEN
+                    difference < 0 -> Color.RED
+                    else -> Color.GRAY
+                }
+                SpannableStringBuilder()
+                    .color(color){
+                        append(currency.difference)
+                    }
+            }
+            AutoCompleteItem.LOW -> {
+                SpannableStringBuilder().append(currency.dLow)
+            }
+            AutoCompleteItem.HIGH -> {
+                SpannableStringBuilder().append(currency.dHigh)
+            }
+            AutoCompleteItem.BUY -> {
+                SpannableStringBuilder().append(currency.buy)
+            }
+            AutoCompleteItem.SELL -> {
+                SpannableStringBuilder().append(currency.sell)
+            }
         }
     }
 

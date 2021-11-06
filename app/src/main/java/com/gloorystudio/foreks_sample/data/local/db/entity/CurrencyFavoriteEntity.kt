@@ -7,6 +7,6 @@ import androidx.room.PrimaryKey
 @Entity
 data class CurrencyFavoriteEntity(
     @PrimaryKey(autoGenerate = false)
-    @ColumnInfo(name = "tke")
-    val tke: String
+    @ColumnInfo(name = "code")
+    val code: String
 )
