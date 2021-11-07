@@ -26,10 +26,15 @@ object Libraries {
         const val constraintLayoutVersion = "2.1.1"
         const val dataBindingRuntimeVersion = "7.0.3"
         const val legacySupportV4Version = "1.0.0"
+        const val fragmentKtxVersion = "1.3.6"
+
+        //Test
         const val junitVersion = "4.13.2"
         const val junitExtVersion = "1.1.3"
         const val espressoVersion = "3.4.0"
-        const val fragmentKtxVersion = "1.3.6"
+        const val coroutinesTestVersion = "1.5.0"
+        const val truthVersion = "1.0.1"
+        const val coreTestingVersion = "2.1.0"
 
         // Timber
         const val timberVersion = "4.7.1"
@@ -69,10 +74,17 @@ object Libraries {
         "androidx.databinding:databinding-runtime:${Version.dataBindingRuntimeVersion}"
     const val legacySupportV4 =
         "androidx.legacy:legacy-support-v4:${Version.legacySupportV4Version}"
+    const val fragmentKtx = "androidx.fragment:fragment-ktx:${Version.fragmentKtxVersion}"
+
+
+    //Test
     const val junit = "junit:junit:${Version.junitVersion}"
     const val junitExt = "androidx.test.ext:junit:${Version.junitExtVersion}"
     const val espresso = "androidx.test.espresso:espresso-core:${Version.espressoVersion}"
-    const val fragmentKtx = "androidx.fragment:fragment-ktx:${Version.fragmentKtxVersion}"
+    const val coroutinesTest =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Version.coroutinesTestVersion}"
+    const val truth = "com.google.truth:truth:${Version.truthVersion}"
+    const val coreTesting = "androidx.arch.core:core-testing:${Version.coreTestingVersion}"
 
     // Timber
     const val timber = "com.jakewharton.timber:timber:${Version.timberVersion}"
@@ -88,7 +100,8 @@ object Libraries {
     // Retrofit
     const val retrofit = "com.squareup.retrofit2:retrofit:${Version.retrofitVersion}"
     const val converterGson = "com.squareup.retrofit2:converter-gson:${Version.retrofitVersion}"
-    const val retrofitRxJavaAdapter = "com.squareup.retrofit2:adapter-rxjava2:${Version.retrofitVersion}"
+    const val retrofitRxJavaAdapter =
+        "com.squareup.retrofit2:adapter-rxjava2:${Version.retrofitVersion}"
     const val okhttp = "com.squareup.okhttp3:okhttp:${Version.okhttpVersion}"
     const val loggingInterceptor =
         "com.squareup.okhttp3:logging-interceptor:${Version.okhttpVersion}"
@@ -112,8 +125,10 @@ object Libraries {
     const val dagger = "com.google.dagger:dagger:${Version.daggerVersion}"
     const val daggerCompiler = "com.google.dagger:dagger-compiler:${Version.daggerVersion}"
     const val daggerAndroid = "com.google.dagger:dagger-android:${Version.daggerVersion}"
-    const val daggerAndroidSupport = "com.google.dagger:dagger-android-support:${Version.daggerVersion}"
-    const val daggerAndroidProcessor = "com.google.dagger:dagger-android-processor:${Version.daggerVersion}"
+    const val daggerAndroidSupport =
+        "com.google.dagger:dagger-android-support:${Version.daggerVersion}"
+    const val daggerAndroidProcessor =
+        "com.google.dagger:dagger-android-processor:${Version.daggerVersion}"
 
     //MPAndroidChart
     const val mpAndroidChart = "com.github.PhilJay:MPAndroidChart:${Version.mpAndroidChartVersion}"

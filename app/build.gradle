@@ -35,6 +35,9 @@ android {
     buildFeatures {
         dataBinding true
     }
+    packagingOptions {
+        resources.excludes.add("META-INF/*")
+    }
 }
 
 dependencies {
@@ -45,10 +48,15 @@ dependencies {
     implementation(Libraries.constraintLayout)
     implementation(Libraries.dataBindingRuntime)
     implementation(Libraries.legacySupportV4)
+    implementation(Libraries.fragmentKtx)
+
+    //Test
     testImplementation(Libraries.junit)
     androidTestImplementation(Libraries.junitExt)
     androidTestImplementation(Libraries.espresso)
-    implementation(Libraries.fragmentKtx)
+    androidTestImplementation(Libraries.coroutinesTest)
+    androidTestImplementation(Libraries.truth)
+    androidTestImplementation(Libraries.coreTesting)
 
     // Timber
     implementation(Libraries.timber)

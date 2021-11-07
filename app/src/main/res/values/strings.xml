@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Foreks-Sample</string>
-    <string name="home">Home</string>
-    <string name="favorite">Favorite</string>
+    <string name="home">Ana Sayfa</string>
+    <string name="favorite">Favoriler</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_favorite">Favorilerime Ekle</string>
